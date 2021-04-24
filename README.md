@@ -7,5 +7,4 @@ Folder GI Projekat contains files related to project 'Variant Calling using bino
 It contains Jupyter notebooks with the algorithm written in Python that uses pileup file and generates Variant Call file using binomial probabilities for calling.
 It also contains Jupyter notebooks with metrics calculation and metric graphs.
 
-Youtube video with the presentation of the project:
-https://www.youtube.com/watch?v=J-Ce-A3Jj40
+Youtube video with the presentation of the project: [Variant calling using binomial distribution](https://www.youtube.com/watch?v=J-Ce-A3Jj40&t=2s)
