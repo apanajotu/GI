@@ -32,6 +32,7 @@ Pileup format:
 Variant calling:
 
 [Melbourne Bioinformatics - Tutorials - Introduction to Variant detection](https://www.melbournebioinformatics.org.au/tutorials/tutorials/var_detect_advanced/var_detect_advanced_background/)
+[Variant identification and analysis](https://www.ebi.ac.uk/training/online/courses/human-genetic-variation-introduction/variant-identification-and-analysis/)
 
 VCF:
 [VCF Version 4.2 Specification](https://samtools.github.io/hts-specs/VCFv4.2.pdf)
@@ -40,5 +41,3 @@ VCF:
 [Youtube: Understanding VCF file | Variant Call Format Part 2/3](https://www.youtube.com/watch?v=WV3Pls1_z_4)
 [Youtube: Understanding VCF file | Variant Call Format Part 3/3](https://www.youtube.com/watch?v=2P4EItXCtFI)
 [Understanding VCF format](https://www.ebi.ac.uk/training/online/courses/human-genetic-variation-introduction/variant-identification-and-analysis/understanding-vcf-format/)
-
-and many more...
