@@ -108,7 +108,7 @@ def calculate_binomial(var1, var2):
         res2 = binomial(float(var2.num_reads), float(var2.num_occ), float(p))
         res3 = binomial(float(var1.num_reads), float(var1.num_reads), float(p))
         
-        if(res1 > res2):
+        if(res1 >= res2):
             if(res1 > res3):
                 return var1, None
             else:
