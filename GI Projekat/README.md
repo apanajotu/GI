@@ -14,18 +14,18 @@ Python script: variant_call_binom.py
 
 Examples:
 
-python variant_call_binom.py example_pileup //no .fai, default output, default probability
- output: binom_variant_p0.85_called.vcf
+python variant_call_binom.py example_pileup //no .fai, default output, default probability\
+output: binom_variant_p0.85_called.vcf
 
 python variant_call_binom.py example_pileup -o output_folder/test_variant //no .fai, default probability of 0.85 
- output: output_folder/test_variant_p0.85_called.vcf
+output: output_folder/test_variant_p0.85_called.vcf
 
 python variant_call_binom.py example_pileup -o output_folder/test_variant -f example_fasta_file.fai -p 0.5 0.6 0.8 0.9
 output: 
- output_folder/test_variant_p0.5_called.vcf
- output_folder/test_variant_p0.6_called.vcf
- output_folder/test_variant_p0.8_called.vcf
- output_folder/test_variant_p0.9_called.vcf
+output_folder/test_variant_p0.5_called.vcf
+output_folder/test_variant_p0.6_called.vcf
+output_folder/test_variant_p0.8_called.vcf
+output_folder/test_variant_p0.9_called.vcf
 
 ------------
 
