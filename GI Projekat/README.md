@@ -4,6 +4,26 @@
 Variant calling algoritm using binomial distribution done as a research project for course Computational Genomics.
 
 ------------
+
+Python script: variant_call_binom.py
+ - mandatory first argument: pileup_file_path
+ - optional arguments:
+ -    -o output_vcf_file_path (if not providided, output will be generated on the path where script is called with name 'binom_variant_p[probability]_called.vcf'
+ -    -f fai_file_path (fasta index file) (if not provided, contig info in vcf header will be missing, warning will be printed out)
+ -    -p array of float values of probabilities for calculating binomial probabilities (if provided, output file will end with '_p[probability]_called.vcf', if not probability of 0.85 will be used)
+Example:
+python variant_call_binom.py example_pileup //no .fai, default output, default probability
+> binom_variant_p0.85_called.vcf
+python variant_call_binom.py example_pileup -o output_folder/test_variant //no .fai, default probability of 0.85 
+> output_folder/test_variant_p0.85_called.vcf
+python variant_call_binom.py example_pileup -o output_folder/test_variant -f example_fasta_file.fai -p 0.5 0.6 0.8 0.9
+>output_folder/test_variant_p0.5_called.vcf
+>output_folder/test_variant_p0.6_called.vcf
+>output_folder/test_variant_p0.8_called.vcf
+>output_folder/test_variant_p0.9_called.vcf
+
+
+
 Text of the project is given in "Projektni zadatak.pdf"
 Presentation about this project is "Variant calling using binomial distribution.pptx"
 Youtube video for this presenation: [Variant calling using binomial distribution](https://www.youtube.com/watch?v=J-Ce-A3Jj40)
