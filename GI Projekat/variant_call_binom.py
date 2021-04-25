@@ -359,25 +359,54 @@ def main_func(pileup_file_str, output_file_str, reference_fai_file_str):
 ## MAIN CODE - opens files, calls main task
 ##
 if __name__ == "__main__" :
-    if(len(sys.argv) < 3):
-        print('Error: Please provide pileup file path and output file path. Fasta index file (.fai) is optional as third argument (no contig info will be provided without it).')
+    if(len(sys.argv) < 2):
+        print('Error: Please provide pileup file path')
         raise NameError('Missing_arguments')
-    elif(len(sys.argv) > 4):
-        print('Error: Too many arguments, ex[ected maximum 3! Please provide pileup file path and output file path. Fasta index file (.fai) is optional as third argument (no contig info will be provided without it).')
-        raise NameError('Too_many_arguments')
     else:
+        pileup_file_str = sys.argv[1]
+        output_file_base_str = 'binom_variant'
+        fai = ''
+        p_array = [0.85]
+        o_def = 0
+        p_def = 0
+        f_def = 0
+        for i in range(2, len(sys.argv)):
+            if(sys.argv[i-1] == '-o' or sys.argv[i-1] == '-f'): continue
+            if(sys.argv[i] == '-o'):
+                if(o_def == 1):
+                        print('Error: -o switch already defined')
+                        raise NameError('Incorrect_arguments')
+                output_file_base_str = sys.argv[i+1]
+                o_def = 1
+            if(sys.argv[i] == '-f'):
+                if(f_def == 1):
+                        print('Error: -f switch already defined')
+                        raise NameError('Incorrect_arguments')
+                fai = sys.argv[i+1]
+                f_def = 1
+            if(sys.argv[i] == '-p'):
+                if(p_def != 0):
+                    print('Error: -p switch already defined')
+                    raise NameError('Incorrect_arguments')
+                p_def = i+1
+                
+        if(p_def != 0): 
+            p_array = []    
+            for i in range(p_def, len(sys.argv)):    
+                if(sys.argv[i] == '-o' or sys.argv[i] == '-f'): break
+                p_array.append(float(sys.argv[i]))
+            if(len(p_array) == 0):
+                print('Error: No percentages defined')
+                raise NameError('Incorrect_arguments')
+            
         start = time.time()
-        for i in [0.5]: ########### REMOVE
-        # for i in [0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.98, 0.99]:
+        for i in p_array:
             i_str = str(i)
-#            output_file_str = 'variant_call_results/binom_p' + i_str + '_variant_call.vcf'
-#            pileup_file_str = 'final_short_pileup' 
-#            output_file_str = 'test_variant_call_short_results/binom_p' + i_str + '_short_variant_call.vcf'
-            pileup_file_str = sys.argv[1]
-            output_file_str = sys.argv[2]
-            fai = sys.argv[3] if(len(sys.argv) == 4) else ''
             p = i
+            if (output_file_base_str.rfind(".vcf", 0, len(output_file_base_str)) == -1):
+                output_file_str = output_file_base_str + '_p' + str(i) + '_called.vcf'
+            else:
+                output_file_str = output_file_base_str[0:output_file_base_str.rfind(".vcf", 0, len(output_file_base_str))] + '_p' + str(i) + '_called.vcf'
             main_func(pileup_file_str, output_file_str, fai)
-
         end = time.time() 
         print('Processing took ' + str(end - start) + ' seconds')
